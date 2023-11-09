@@ -46,9 +46,9 @@ class Store < ActiveRecord::Base
     elsif mens_apparel === false && womens_apparel.nil? 
       errors.add(:womens_apparel, "is empty and men was set to false. Stores must carry at least one of the men's or women's apparel")
     elsif mens_apparel === false && womens_apparel === false
-      errors.add(:carry_at_least_one_mens_or_womens, "Stores must carry at least one of the men's or women's apparel. Both mens and womens were set to false")
+      errors.add(:carry_at_least_one_mens_or_womens, ". Stores must carry at least one of the men's or women's apparel. Both mens and womens were set to false")
     elsif mens_apparel.nil? && womens_apparel.nil?
-      errors.add(:carry_at_least_one_mens_or_womens, "Stores must carry at least one of the men's or women's apparel. Both mens and womens were not provided")
+      errors.add(:carry_at_least_one_mens_or_womens, ". Stores must carry at least one of the men's or women's apparel. Both mens and womens were not provided")
     end
   end
 end
@@ -96,6 +96,18 @@ Store.create(name: "Womens true, mens false", annual_revenue: "5", mens_apparel:
 Store.create(name: "Mens false", annual_revenue: "5", mens_apparel:false)
 Store.create(name: "Womens false", annual_revenue: "5", womens_apparel:false)
 Store.create(name: "Both false", annual_revenue: "5", mens_apparel:false, womens_apparel:false)
+
+
+print "Enter Store name: "
+name1 = gets.chomp.to_s
+@store_created = Store.create(name: name1)
+if @store_created.valid? === false
+  puts "There are some errors: "
+   @store_created.errors.full_messages.each do |error|
+      pp error
+    end
+end
+
 
 
 
