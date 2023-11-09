@@ -14,4 +14,4 @@ puts "----------"
 @store3 = Store.find_by(id: 3)
 @store3.destroy
 
-puts "Number of stores in database: #{Store.count}"
+# puts "Number of stores in database: #{Store.count}"

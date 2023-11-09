@@ -15,8 +15,8 @@ puts "----------"
 # @store1.name = "Vancouver"
 # @store1.save
 @store1.update(name: "Vancouver")
-puts "Changed store info: "
-pp @store1
+# puts "Changed store info: "
+# pp @store1
 
-puts "First element from database for testing purpose"
-pp Store.find_by(id: 1)
+# puts "First element from database for testing purpose"
+# pp Store.find_by(id: 1)
