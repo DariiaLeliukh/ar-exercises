@@ -30,8 +30,7 @@ puts "----------"
 
 class Employee < ActiveRecord::Base
   validates :first_name, :last_name, :store, :hourly_rate, presence: true
-  validates :hourly_rate, numericality: { only_integer: true }
-  validates :hourly_rate, numericality: { in: 40...200 }
+  validates :hourly_rate, numericality: { only_integer: true, greater_than_or_equal_to: 40, less_than_or_equal_to: 100 }
 end
 
 #this should work
@@ -41,4 +40,8 @@ end
 @store1.employees.create(last_name: "NoFirstNamed", hourly_rate: 60)
 
 #this should not work either
-@store1.employees.create(first_name: "String", last_name: "Hourly Rate", hourly_rate: '30')
+@store1.employees.create(first_name: "String", last_name: "Hourly Rate", hourly_rate: "abc")
+
+#this should not work
+@store1.employees.create!(first_name: "String", last_name: "Hourly Rate", hourly_rate: 30)
+
