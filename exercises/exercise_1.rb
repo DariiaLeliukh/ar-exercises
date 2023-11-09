@@ -23,3 +23,5 @@ richmond_store.save
 
 gastown_store = Store.create(name: "Gastown", annual_revenue: 190000, mens_apparel: true, womens_apparel: false)
 gastown_store.save
+
+puts "Number of stores in database: #{Store.count}"
